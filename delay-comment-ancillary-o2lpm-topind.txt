@@ -1,0 +1,45 @@
+Delay Other
+
+transporter/assignment.asp
+transporter/delay.asp
+admin/report/exportDelays.asp
+admin/report/totalDelays.asp
+
+Delay DB
+
+tblDelays - txtDelayComment
+
+OxygenLPM
+
+desktop/entry.asp
+dekstop/editrequest.asp
+desktop/cancelrequest.asp
+desktop/viewrequest.asp
+desktop/presched.asp
+desktop/preschedmulti.asp
+transporter/assignment.asp
+transporter/redispatch.asp
+admin/manualrequestentry.asp
+admin/enterRequest.asp
+admin/editRequest.asp
+admin/viewRequest.asp
+admin/adminCancel.asp
+
+OxygenLPM DB
+
+tblRequests - txtOxygenLPM - int - default 0
+
+Top Waiting
+
+desktop/default.asp
+desktop/maketop.asp
+desktop/panels/waitingPanel.asp
+transporter/delay.asp
+
+Top Waiting DB
+
+tblRequests - bTop - bit - default 0
+tblRequests - dtTop - datetime
+tblRequests - txtTopNTUser - nvarchar(50)
+tblRequests - txtTopAdmin - nvarchar(50)
+

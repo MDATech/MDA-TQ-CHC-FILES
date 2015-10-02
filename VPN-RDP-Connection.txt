@@ -1,0 +1,33 @@
+Just use browser for VPN connection.  Do not setup VPN connection on desktop
+
+VPN Connection:
+https://mywork.chc.net/vpn/index.html  
+un: TransQuestVPN
+pd: RUL8fD%126
+dm: CHC
+
+Server Connection:
+RDP to CHCTQSVR01.chc.net
+Un: TransQuest
+Pd: RUL8fD%104
+Dm: CHc
+
+If problems try syntax of "f" and "d" in passwords
+
+Surgical Transporter Modification
+
+Tables:
+tblUserTypes - Surgical Transporter - 999
+tblRequests - bSurgical - bit - default(0)
+
+Files:
+desktop/entry.asp
+desktop/editrequest.asp
+desktop/presched.asp
+desktop/preschedmulti.asp
+desktop/panels/waitingPanel.asp
+desktop/panels/assignedPanel.asp
+desktop/panels/completedPanel.asp
+desktop/panels/transporterPanel.asp
+transporter/assignment.asp
+transporter/waiting.asp

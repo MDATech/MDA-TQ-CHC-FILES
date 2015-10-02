@@ -1,0 +1,491 @@
+CREATE TABLE [tblAdmin](
+	[ID] [int] IDENTITY(1,1) NOT FOR REPLICATION NOT NULL,
+	[name] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_tblAdmin_name]  DEFAULT ('none'),
+	[ntUser] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_tblAdmin_ntUser]  DEFAULT ('none'),
+	[flag] [bit] NOT NULL CONSTRAINT [DF_tblAdmin_flag]  DEFAULT ((0)),
+	[txtPassword] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[nType] [int] NOT NULL CONSTRAINT [DF_tblAdmin_nType]  DEFAULT ((0)),
+	[bUpdated] [bit] NOT NULL CONSTRAINT [DF_tblAdmin_bUpdated]  DEFAULT ((0))
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblADT](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtPatientName] [nvarchar](125) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtMEDREC] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtAcct] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtDOB] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtLocation] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtLocRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dtTimeStamp] [datetime] NOT NULL CONSTRAINT [DF_tblADT_dtTimeStamp]  DEFAULT (getdate()),
+	[bDischarged] [bit] NOT NULL CONSTRAINT [DF_tblADT_bDischarged]  DEFAULT ((0))
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblADTRandom](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtPatientName] [nvarchar](125) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtMEDREC] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtAcct] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtDOB] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtLocation] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtLocRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dtTimeStamp] [datetime] NOT NULL,
+	[bDischarged] [bit] NOT NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblADT_Backup](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtPatientName] [nvarchar](125) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtMEDREC] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtAcct] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtDOB] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtLocation] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtLocRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dtTimeStamp] [datetime] NOT NULL,
+	[bDischarged] [bit] NOT NULL
+) ON [PRIMARY]
+
+
+
+
+CREATE TABLE [tblCancellationReasons](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtReason] [nvarchar](150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblCancellationReasonsAdmin](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtReason] [nvarchar](150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblDayRef](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtDayName] [nchar](10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblDelays](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nTransportID] [int] NULL,
+	[txtDelayType] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dtDelayStart] [datetime] NULL,
+	[dtDelayEnd] [datetime] NULL,
+	[txtRandomToken] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblDelays_trash](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nTransportID] [int] NULL,
+	[txtDelayType] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[dtDelayStart] [smalldatetime] NULL,
+	[dtDelayEnd] [smalldatetime] NULL,
+	[txtRandomToken] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblEquipment](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtName] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtType] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[nIndex] [int] NOT NULL CONSTRAINT [DF_tblEquipment_nIndex]  DEFAULT ((0))
+) ON [PRIMARY]
+
+
+
+
+CREATE TABLE [tblHourRef](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nHour] [int] NOT NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblMDA_BadgeScan](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtScanned] [nvarchar](2048) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtNotes] [nvarchar](2048) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dtTimeStamp] [datetime] NOT NULL CONSTRAINT [DF_tblMDA_BadgeScan_dtTimeStamp]  DEFAULT (getdate())
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblInvalidLogin](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtUsername] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtPassword] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dtAttempt] [datetime] NOT NULL CONSTRAINT [DF_tblInvalidLogin_dtAttempt]  DEFAULT (getdate())
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblMessages](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nUserID] [int] NOT NULL,
+	[nType] [int] NULL,
+	[txtMessage] [varchar](2000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtSender] [char](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[dtSent] [datetime] NOT NULL CONSTRAINT [DF_tblMessages_dtSent]  DEFAULT (getdate()),
+	[dtRead] [smalldatetime] NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblPriority](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nIndex] [int] NOT NULL,
+	[txtLocation] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[nPickup] [float] NOT NULL CONSTRAINT [DF_tblPriority_nPickup]  DEFAULT ((0)),
+	[nDestination] [float] NOT NULL CONSTRAINT [DF_tblPriority_nDestination]  DEFAULT ((0)),
+	[nZone] [float] NOT NULL CONSTRAINT [DF_tblPriority_nZone]  DEFAULT ((0)),
+	[txtLocationType] [nvarchar](20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_tblPriority_txtOriginDest]  DEFAULT (N'BOTH'),
+	[nLocationPriority] [float] NOT NULL CONSTRAINT [DF_tblPriority_nLocationPriority]  DEFAULT ((0)),
+	[nZonePriority] [float] NOT NULL CONSTRAINT [DF_tblPriority_nZonePriority]  DEFAULT ((0)),
+	[txtLocationCode] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_tblPriority_txtLocationCode]  DEFAULT (N'none')
+) ON [PRIMARY]
+
+
+CREATE TABLE [dbo].[tblRandomNames](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtMale] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtFemale] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtSurname] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+ CONSTRAINT [PK_tblRandomNames] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+
+
+
+CREATE TABLE [tblRequests](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtSubject] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDOB] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtRequestor] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOriginRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOrigin] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtEquipment] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtAncillaryEquipment] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOriginPOC] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDestRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDest] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtComments] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDestPOC] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[bIsolation] [bit] NULL CONSTRAINT [DF_tblRequests_bIsolation_1]  DEFAULT ((0)),
+	[dtEntered] [datetime] NOT NULL CONSTRAINT [DF_tblRequests_dtEntered_1]  DEFAULT (getdate()),
+	[dtEffective] [datetime] NOT NULL CONSTRAINT [DF_tblRequests_dtEffective_1]  DEFAULT (getdate()),
+	[nAssignedTo] [int] NULL,
+	[dtAssigned] [datetime] NULL,
+	[dtCompleted] [datetime] NULL,
+	[bCancelled] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bCancelled_1]  DEFAULT ((0)),
+	[txtCancelReason] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtCancelComm] [nvarchar](1000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtStatus] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtRandomToken] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[bScheduled] [bit] NULL CONSTRAINT [DF_tblRequests_bScheduled_1]  DEFAULT ((0)),
+	[dtScheduled] [datetime] NULL,
+	[bStat] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bStat_1]  DEFAULT ((0)),
+	[dtDispatchNoEarlierThan] [datetime] NULL,
+	[bRedispatch] [bit] NULL CONSTRAINT [DF_tblRequests_bRedispatch]  DEFAULT ((0)),
+	[dtStat] [datetime] NULL,
+	[txtStatNTUser] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtStatAdmin] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtIsolation] [nvarchar](15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL CONSTRAINT [DF_tblRequests_txtIsolation]  DEFAULT ('None'),
+	[txtMRN] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[ADTID] [int] NULL CONSTRAINT [DF_tblRequests_ADTID]  DEFAULT ((0))
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblRequests_trash](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtSubject] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDOB] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtRequestor] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOriginRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOrigin] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtEquipment] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtAncillaryEquipment] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtOriginPOC] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDestRoom] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDest] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtComments] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtDestPOC] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[bIsolation] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bIsolation]  DEFAULT ((0)),
+	[dtEntered] [datetime] NOT NULL CONSTRAINT [DF_tblRequests_dtEntered]  DEFAULT (getdate()),
+	[dtEffective] [datetime] NOT NULL CONSTRAINT [DF_tblRequests_dtEffective]  DEFAULT (getdate()),
+	[nAssignedTo] [int] NULL,
+	[dtAssigned] [datetime] NULL,
+	[dtCompleted] [datetime] NULL,
+	[bCancelled] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bCancelled]  DEFAULT ((0)),
+	[txtCancelReason] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtCancelComm] [nvarchar](2000) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtStatus] [nvarchar](255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtRandomToken] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[bScheduled] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bScheduled]  DEFAULT ((0)),
+	[dtScheduled] [datetime] NULL,
+	[bStat] [bit] NOT NULL CONSTRAINT [DF_tblRequests_bStat]  DEFAULT ((0)),
+	[dtDispatchNoEarlierThan] [datetime] NULL
+) ON [PRIMARY]
+
+
+CREATE TABLE [tblSystemSettings](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nCompletedTransMaxHours] [int] NOT NULL CONSTRAINT [DF_tblSystemSettings_nCompletedTransMaxHours]  DEFAULT ((2)),
+	[nWaitTimeThreshold] [int] NOT NULL CONSTRAINT [DF_tblSystemSettings_nWaitTimeThreshold]  DEFAULT ((60)),
+	[nSchedTransLeadTime] [int] NOT NULL CONSTRAINT [DF_tblSystemSettings_nSchedTransLeadTime]  DEFAULT ((180))
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblUserLogInOut](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nUserID] [int] NOT NULL,
+	[dtLogIn] [datetime] NOT NULL,
+	[dtLogOut] [datetime] NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblUsers](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[txtName] [nvarchar](128) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[nType] [int] NOT NULL,
+	[txtPassword] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[txtStatus] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[txtStatusTime] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	[bHidden] [bit] NOT NULL CONSTRAINT [DF_tblUsers_bHidden]  DEFAULT ((0))
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblUserStatusInOut](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[nUserID] [int] NOT NULL,
+	[dtLogOut] [datetime] NOT NULL,
+	[dtLogIn] [datetime] NULL,
+	[txtStatus] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+
+CREATE TABLE [tblUserTypes](
+	[ID] [int] NOT NULL,
+	[txtType] [nvarchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+
+
+
+CREATE PROCEDURE [spTransporterCoverage] 
+ -- Add the parameters for the stored procedure here
+ @dtStartDate datetime, 
+ @dtEndDate datetime
+AS
+BEGIN
+ -- SET NOCOUNT ON added to prevent extra result sets from
+ -- interfering with SELECT statements.
+ SET NOCOUNT ON;
+    -- Insert statements for procedure here
+WITH x (start_date, end_date)
+ AS
+ (SELECT CAST(@dtStartDate AS DATETIME) start_date,
+ CAST(@dtEndDate AS DATETIME) end_date
+ UNION ALL
+ SELECT DATEADD(hour,1,start_date),
+ end_date
+ FROM x
+ WHERE DATEADD(hour,1,start_date) < end_date)
+ SELECT ss1.dayofweeknum, ss1.dayofweek,
+ AVG(ss1.num_trans) avg_trans,
+ 'hourofday' = 
+CASE WHEN ss1.hourofday = 0
+ THEN '00' WHEN ss1.hourofday = 1
+ THEN '01' WHEN ss1.hourofday = 2
+ THEN '02' WHEN ss1.hourofday = 3
+ THEN '03' WHEN ss1.hourofday = 4
+ THEN '04' WHEN ss1.hourofday = 5
+ THEN '05' WHEN ss1.hourofday = 6
+ THEN '06' WHEN ss1.hourofday = 7
+ THEN '07' WHEN ss1.hourofday = 8
+ THEN '08' WHEN ss1.hourofday = 9
+ THEN '09'
+ ELSE ss1.hourofday
+ END
+ FROM
+ (SELECT DATEPART(weekday, x.start_date) dayofweeknum,
+ DATENAME(weekday, x.start_date) dayofweek,
+ DATENAME(hour, x.start_date) hourofday,
+ x.start_date dateDt,
+ COUNT(e.dtLogIn) num_trans
+ FROM x
+ left join tds.dbo.tblUserLogInOut e
+ ON ((e.dtLogOut IS NULL OR x.start_date <= e.dtLogOut)
+ AND x.start_date >= e.dtLogIn)
+ GROUP BY x.start_date) ss1
+ GROUP BY ss1.dayofweeknum, ss1.dayofweek, ss1.hourofday
+ ORDER BY 4, 1
+ OPTION (MAXRECURSION 32767)
+END
+
+
+
+CREATE PROCEDURE [spTransporterSchedule] 
+ -- Add the parameters for the stored procedure here
+ @dtStartDate datetime, 
+ @dtEndDate datetime, 
+ @transporterID int
+AS
+BEGIN
+ -- SET NOCOUNT ON added to prevent extra result sets from
+ -- interfering with SELECT statements.
+ SET NOCOUNT ON;
+    -- Insert statements for procedure here
+WITH x (start_date, end_date)
+ AS
+(
+ SELECT CAST(@dtStartDate AS DATETIME) start_date,
+  CAST(@dtEndDate AS DATETIME) end_date
+ UNION ALL
+ SELECT DATEADD(hour,1,start_date), end_date
+  FROM x
+  WHERE DATEADD(hour,1,start_date) < end_date
+)
+ SELECT nUserID,
+  DATEPART(weekday, x.start_date) dayofweeknum,
+  DATENAME(weekday, x.start_date) dayofweek,
+  DATENAME(hour, x.start_date) hourofday,
+  x.start_date dateDt,
+  CAST(x.start_date AS varchar(11)) dateOnly,
+  e.txtStatus,
+  'startLogTime' = 
+  CASE WHEN e.txtStatus = 'Log In'
+   THEN e.dtLogIn
+   ELSE e.dtLogOut
+  END,
+  'endLogTime' = 
+  CASE WHEN e.txtStatus = 'Log In'
+   THEN e.dtLogOut
+   ELSE e.dtLogIn
+  END
+ FROM x
+ left join (
+  SELECT a.nUserID, a.dtLogIn, a.dtLogOut, 'Log In' as txtStatus
+   FROM tblUserLogInOut a
+  UNION
+  SELECT b.nUserID, b.dtLogIn, b.dtLogOut, b.txtStatus
+   FROM tblUserStatusInOut b) e
+ ON  ((DATEPART(year,x.start_date) = DATEPART(year,e.dtLogIn)) AND
+  (DATEPART(month,x.start_date) = DATEPART(month,e.dtLogIn)) AND
+  (DATEPART(day,x.start_date) = DATEPART(day,e.dtLogIn)) AND
+  (DATEPART(hour,x.start_date) = DATEPART(hour,e.dtLogIn)) AND
+  (e.txtStatus = 'Log In'))
+  OR
+  ((DATEPART(year,x.start_date) = DATEPART(year,e.dtLogOut)) AND
+  (DATEPART(month,x.start_date) = DATEPART(month,e.dtLogOut)) AND
+  (DATEPART(day,x.start_date) = DATEPART(day,e.dtLogOut)) AND
+  (DATEPART(hour,x.start_date) = DATEPART(hour,e.dtLogOut)) AND
+  (e.txtStatus <> 'Log In'))
+ WHERE txtStatus IS NOT NULL
+ AND nUserID = @transporterID
+ ORDER BY dateDt, startLogTime, endLogTime
+ OPTION (MAXRECURSION 32767)
+END
+
+
+
+USE [tds]
+GO
+/****** Object:  StoredProcedure [dbo].[spTransporterStatistics]    Script Date: 11/20/2008 21:04:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [spTransporterStatistics] 
+ -- Add the parameters for the stored procedure here
+ @dtStartDate datetime, 
+ @dtEndDate datetime
+AS
+BEGIN
+ -- SET NOCOUNT ON added to prevent extra result sets from
+ -- interfering with SELECT statements.
+ SET NOCOUNT ON;
+    -- Insert statements for procedure here
+ SELECT
+t1.ID as nTransporterID,
+txtName as txtTransporterName,
+t1.bHidden,
+count(t2.ID) as nRequestCnt,
+sum(DATEDIFF(minute,dtAssigned,dtCompleted)) as nTotalRequestMins,
+avg(DATEDIFF(minute,dtAssigned,dtCompleted)) as nAvgRequestMins,
+count(t3.ID) as nDelaysCnt,
+sum(DATEDIFF(minute,dtDelayStart,dtDelayEnd)) as nTotalDelayMins,
+avg(DATEDIFF(minute,dtDelayStart,dtDelayEnd)) as nAvgDelayMins
+FROM tds.dbo.tblUsers t1
+LEFT OUTER JOIN tds.dbo.tblRequests t2
+ON t1.ID=t2.nAssignedTo
+LEFT OUTER JOIN tds.dbo.tblDelays t3
+ON t2.ID=t3.nTransportID
+WHERE bCancelled = '0'
+ AND t2.dtCompleted >= @dtStartDate
+ AND t2.dtCompleted <= @dtEndDate
+group by t1.ID, txtName, t1.bHidden
+order by txtName
+END
+
+
+
+CREATE PROCEDURE [spTransportPeakTimesDateRange] 
+ -- Add the parameters for the stored procedure here
+ @dtStartDate datetime, 
+ @dtEndDate datetime
+AS
+BEGIN
+ -- SET NOCOUNT ON added to prevent extra result sets from
+ -- interfering with SELECT statements.
+ SET NOCOUNT ON;
+    -- Insert statements for procedure here
+SELECT
+ ss2.nHour as nPeakHour,
+ ss1.ID as nPeakDay,
+ ss1.nCount as nPeakCount,
+ ss2.AVG_Wait as nPeakAvgWait,
+ ss1.AVG_Run as nPeakAvgRun
+FROM 
+(SELECT tblDayRef.ID, tblHourRef.nHour, COUNT(*) as nCount,
+    AVG(DateDiff(n,tblRequests.dtAssigned,dtCompleted)) as AVG_Run
+    FROM tblRequests
+    LEFT OUTER JOIN tblDayRef
+     ON tblDayRef.ID = DatePart(dw,dtEntered)
+    LEFT OUTER JOIN tblHourRef
+    ON tblHourRef.nHour = DatePart(hh,dtEntered)
+    WHERE bCancelled=0
+    AND dtEntered >= @dtStartDate
+    AND dtEntered <= @dtEndDate
+    GROUP BY tblDayRef.ID, tblHourRef.nHour) ss1
+LEFT OUTER JOIN (SELECT tblDayRef.ID, tblHourRef.nHour, AVG(DateDiff(n,tblRequests.dtEntered,dtAssigned)) as AVG_WAIT
+    FROM tblRequests
+    LEFT OUTER JOIN tblDayRef
+     ON tblDayRef.ID = DatePart(dw,dtEntered)
+    LEFT OUTER JOIN tblHourRef
+    ON tblHourRef.nHour = DatePart(hh,dtEntered)
+    WHERE bCancelled=0
+    AND bScheduled=0
+    AND nAssignedTo Is Not Null
+    AND dtEntered >= @dtStartDate
+    AND dtEntered <= @dtEndDate
+    GROUP BY tblDayRef.ID, tblHourRef.nHour) ss2
+ON ss1.ID=ss2.ID
+and ss1.nHour=ss2.nHour
+ORDER BY ss1.ID, ss2.nHour
+END
